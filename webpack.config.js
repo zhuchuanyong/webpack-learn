@@ -1,6 +1,7 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-    entry: './main.js',
+    entry: './src/main.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, './dist')
@@ -20,6 +21,13 @@ module.exports = {
         ]
     },
     plugins: [
+
+        // html-webpack-plugin
+        // 功能 创建一个空html 自动引入js css
+        new HtmlWebpackPlugin({
+            // 复制一个html文件 并自动引入js css
+            template: './src/index.html'
+        })
 
     ],
     mode: 'development'
