@@ -1,6 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+// 设置nodejs环境变量
+// process.env.NODE_ENV = 'production'
 module.exports = {
     entry: './src/main.js',
     output: {
@@ -13,8 +16,36 @@ module.exports = {
                 // 用正则去匹配要用该 loader 转换的 CSS 文件
                 test: /\.css$/,
                 use: [
-                    MiniCssExtractPlugin.loader,  // 取代style-loader 提取css为单独文件
-                    'css-loader'
+                    // 'style-loader',
+                    // 取代style-loader 提取css为单独文件
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: '../', // 设置图片打包路径 不设置会引起css 背景图片路径不准确
+                        },
+                    },
+                    'css-loader',
+                    // 'postcss-loader'
+                    // css兼容性处理
+                    // {
+                    //     loader: "postcss-loader",
+
+                    //     options: {
+                    //         ident: 'postcss',
+                    //         publicPath: '../',
+                    //         // publicPath: (resourcePath, context) => {
+                    //         //     // publicPath is the relative path of the resource to the context
+                    //         //     // e.g. for ./css/admin/main.css the publicPath will be ../../
+                    //         //     // while for ./css/main.css the publicPath will be ../
+                    //         //     return path.relative(path.dirname(resourcePath), context) + '/';
+                    //         // },
+                    //         // postcss  使用的插件
+                    //         plugins: () => {
+                    //             // 帮postcss 找到package.json 里browserslist 里的配置  通过配置处理css兼容性
+                    //             require('postcss-preset-env')()
+                    //         }
+                    //     }
+                    // }
                 ]
                 // use: ['style-loader', 'css-loader']
             },
@@ -22,7 +53,14 @@ module.exports = {
                 // 用正则去匹配要用该 loader 转换的 scss 文件
                 test: /\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    // MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: '../', // 设置图片打包路径 不设置会引起css 背景图片路径不准确
+                        },
+                    },
+                    // 'style-loader',
                     'css-loader',
                     'sass-loader'
                 ]
@@ -86,6 +124,7 @@ module.exports = {
 
     ],
     mode: 'development',
+    // mode: process.env.NODE_ENV,
 
     // 开发服务器
     devServer: {

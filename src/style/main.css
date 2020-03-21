@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    backface-visibility: hidden;
     /* align-content: center; */
     /* color: red; */
 }
