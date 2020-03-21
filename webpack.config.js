@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: './src/main.js',
     output: {
@@ -11,12 +12,20 @@ module.exports = {
             {
                 // 用正则去匹配要用该 loader 转换的 CSS 文件
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: [
+                    MiniCssExtractPlugin.loader,  // 取代style-loader 提取css为单独文件
+                    'css-loader'
+                ]
+                // use: ['style-loader', 'css-loader']
             },
             {
                 // 用正则去匹配要用该 loader 转换的 scss 文件
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader']
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader'
+                ]
             },
             {
                 // 下载 url-loader file-loader
@@ -67,7 +76,13 @@ module.exports = {
         new HtmlWebpackPlugin({
             // 复制一个html文件 并自动引入js css
             template: './src/index.html'
-        })
+        }),
+
+        new MiniCssExtractPlugin(
+            {
+                filename: 'style/content.css',  // 对输出文件进行重命名
+            }
+        )
 
     ],
     mode: 'development',

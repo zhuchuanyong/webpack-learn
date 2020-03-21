@@ -7,7 +7,9 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "webpack --config webpack.config.js",
         "dev": "rimraf ./dist && webpack-dev-server",
-        "clean": "rimraf ./dist && rimraf ./node_modules"
+        "clean": "rimraf ./dist && rimraf ./node_modules",
+        "cleandist": "rimraf ./dist",
+        "cleanN": "rimraf ./node_modules"
     },
     "author": "",
     "license": "ISC",
@@ -25,6 +27,7 @@
         "file-loader": "^6.0.0",
         "html-loader": "^1.0.0",
         "html-webpack-plugin": "^3.2.0",
+        "mini-css-extract-plugin": "^0.9.0",
         "url-loader": "^4.0.0"
     }
 }
