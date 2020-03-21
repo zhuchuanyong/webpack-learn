@@ -5,4 +5,4 @@ require('./main.css');
 
 require('./main.scss')
 // 执行 show 函数
-show('Webpack233');
+show('忍者');

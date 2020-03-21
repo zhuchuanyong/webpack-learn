@@ -1,5 +1,9 @@
 #app {
     text-align: center;
     font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* align-content: center; */
     /* color: red; */
 }

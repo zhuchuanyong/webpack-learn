@@ -1,4 +1,14 @@
-#app {
+#apptxt {
     color: red;
     // font-weight: bold;
+}
+.img img,
+.boximg {
+    width: 100px;
+    height: 100px;
+}
+.boximg {
+    background-image: url('./zilaiye.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
