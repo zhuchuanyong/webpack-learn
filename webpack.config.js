@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     entry: './src/main.js',
     output: {
-        filename: 'bundle.js',
+        filename: 'js/bundle.js',
         path: path.resolve(__dirname, './dist')
     },
     module: {
@@ -31,7 +31,10 @@ module.exports = {
                     // 去hash值前10位 ext使用原来的扩展名
                     name: '[hash:10].[ext]',
                     // esModule为true时  html-loader会解析错误
-                    esModule: false
+                    esModule: false,
+
+                    // 打包到images文件夹下
+                    outputPath: 'images'
                 },
 
             },
@@ -46,8 +49,13 @@ module.exports = {
 
             {
                 // 打包其他资源(除css js html)
-                exclude: /\.(css|scss|js|html)$/,
-                loader: 'file-loader'
+                exclude: /\.(css|scss|js|html|png|jpg|gif)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[hash:10].[ext]',
+                    // 打包到media文件夹下
+                    outputPath: 'media'
+                }
 
             }
         ]
