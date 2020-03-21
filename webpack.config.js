@@ -42,6 +42,13 @@ module.exports = {
                 loader: 'html-loader',
 
 
+            },
+
+            {
+                // 打包其他资源(除css js html)
+                exclude: /\.(css|scss|js|html)$/,
+                loader: 'file-loader'
+
             }
         ]
     },
@@ -55,5 +62,16 @@ module.exports = {
         })
 
     ],
-    mode: 'development'
+    mode: 'development',
+
+    // 开发服务器
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        // contentBase: path.join(__dirname, "dist"),
+        // 启动gzip压缩
+        compress: true,
+        port: 8000,
+        // 自动打开浏览器
+        open: true
+    }
 };

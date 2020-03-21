@@ -4,5 +4,6 @@ const show = require('./show.js');
 require('./main.css');
 
 require('./main.scss')
+import './font/iconfont.css'
 // 执行 show 函数
 show('忍者');
