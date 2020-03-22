@@ -1,3 +1,4 @@
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
 #app {
     text-align: center;
     font-size: 30px;
@@ -7,4 +8,11 @@
     backface-visibility: hidden;
     /* align-content: center; */
     /* color: red; */
+}
+:--heading {
+    margin-block: 0;
+}
+
+a {
+    all: initial;
 }
