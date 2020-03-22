@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 
 // 设置nodejs环境变量
@@ -102,7 +103,10 @@ module.exports = {
             {
                 filename: 'style/content.css',  // 对输出文件进行重命名
             }
-        )
+        ),
+
+        // 压缩css
+        new OptimizeCSSAssetsPlugin()
 
     ],
     mode: 'development',
